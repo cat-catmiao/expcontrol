@@ -1,0 +1,12 @@
+name: expcontrol
+version: '${version}'
+main: com.expcontrol.Expcontrol
+api-version: '1.21'
+permissions:
+  expdouble.use:
+    description: 允许玩家获取经验双倍
+    default: false
+
+  expcontrol.*:
+    description: 允许控制经验倍率
+    default: op
