@@ -7,16 +7,8 @@ import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
-/**
- * ExpControl 插件主类，负责管理玩家经验获取倍率。
- * 继承自 JavaPlugin 并实现 Listener 接口以处理相关事件。
- */
 public class Expcontrol extends JavaPlugin implements Listener {
 
-    /**
-     * 插件启用时调用的方法。
-     * 在这里我们注册了事件监听器并输出插件启用的日志信息。
-     */
     @Override
     public void onEnable() {
         getLogger().info("ExpControl has been enabled!"); // 输出插件启用日志
@@ -25,21 +17,12 @@ public class Expcontrol extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this); // 注册事件监听器
     }
 
-    /**
-     * 插件禁用时调用的方法。
-     * 在这里我们输出插件禁用的日志信息。
-     */
     @Override
     public void onDisable() {
         getLogger().info("ExpControl has been disabled!"); // 输出插件禁用日志
     }
 
-    /**
-     * 处理玩家经验变化事件。
-     * 当玩家获取经验时，该方法会被调用，并根据玩家的权限节点调整经验值。
-     *
-     * @param event 玩家经验变化事件
-     */
+     //@param event 玩家经验变化事件
     @EventHandler
     public void onPlayerExpChange(PlayerExpChangeEvent event) {
         Player player = event.getPlayer(); // 获取触发事件的玩家
@@ -53,14 +36,8 @@ public class Expcontrol extends JavaPlugin implements Listener {
         }
     }
 
-    /**
-     * 根据玩家的权限节点获取经验倍率。
-     * 该方法遍历玩家所有的有效权限节点，寻找以 "expcontrol." 开头的节点，
-     * 并尝试将其后续部分解析为整数，作为经验倍率。
-     *
-     * @param player 玩家对象
-     * @return 经验倍率，如果未找到匹配的权限节点，则返回 1（默认倍率）
-     */
+     // @param player 玩家对象
+     // @return 经验倍率，如果未找到匹配的权限节点，则返回 1（默认倍率）
     private int getExpMultiplier(Player player) {
         // 遍历玩家所有的有效权限节点
         for (PermissionAttachmentInfo attachmentInfo : player.getEffectivePermissions()) {
